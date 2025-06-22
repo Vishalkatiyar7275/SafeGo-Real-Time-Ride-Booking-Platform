@@ -1,15 +1,39 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Start = () => {
   return (
-    <div>
-      <div className='bg-cover bg-center bg-[url(https://images.unsplash.com/photo-1619059558110-c45be64b73ae?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] h-screen pt-8 flex justify-between flex-col w-full'>
-        <img className='w-16 ml-8' src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoid2VhcmVcL2ZpbGVcLzhGbTh4cU5SZGZUVjUxYVh3bnEyLnN2ZyJ9:weare:F1cOF9Bps96cMy7r9Y2d7affBYsDeiDoIHfqZrbcxAw?width=1200&height=417" alt="" />
-        <div className='bg-white pb-8 py-4 px-4'>
-          <h2 className='text-[30px] font-semibold'>Get Started with Uber</h2>
-          <Link to='/login' className='flex items-center justify-center w-full bg-black text-white py-3 rounded-lg mt-5'>Continue</Link>
+    <div className="min-h-screen flex flex-col">
+      <div className="relative flex-1 bg-cover bg-center bg-[url('https://plus.unsplash.com/premium_photo-1682091907070-4985a6fbe6d2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dHJhdmVsJTIwYm9va2luZ3xlbnwwfHwwfHx8MA%3D%3D')] flex flex-col justify-between">
+
+        {/* 🔳 Gradient Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-0"></div>
+
+        {/* 🚖 Logo */}
+        <div className="flex justify-end">
+          <img
+            className="w-32 h-auto mt-2 mr-6 drop-shadow-md z-10"
+            src="/SafeLogo.png"
+            alt="SafeGo Logo"
+          />
+        </div>
+
+        {/* 🪟 Glassmorphic Card */}
+        <div className="z-10 w-full max-w-lg mx-auto px-6 py-8 mb-12 bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 text-center">
+          <h2 className="text-4xl font-extrabold text-white/70 mb-3 tracking-tight">
+            Get Started with{' '}
+            <span className="text-[#0074E4]">Safe</span>
+            <span className="text-[#00A676]">Go</span>
+          </h2>
+          <p className="text-lg text-black-200 mb-8">
+            Your reliable ride, just a tap away.
+          </p>
+          <Link
+            to="/login"
+            className="block w-full bg-black text-white py-3 rounded-xl text-lg font-semibold hover:bg-gray-900 transition duration-300 shadow-md"
+          >
+            Continue
+          </Link>
         </div>
       </div>
     </div>

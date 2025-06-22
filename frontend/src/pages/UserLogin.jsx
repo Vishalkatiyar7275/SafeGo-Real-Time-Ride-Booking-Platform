@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserDataContext } from '../context/UserContext'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const UserLogin = () => {
@@ -11,8 +10,6 @@ const UserLogin = () => {
 
   const { user, setUser } = useContext(UserDataContext)
   const navigate = useNavigate()
-
-
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -37,49 +34,73 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='p-7 h-screen flex flex-col justify-between'>
-      <div>
-        <img className='w-16 mb-10' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYQy-OIkA6In0fTvVwZADPmFFibjmszu2A0g&s" alt="" />
-
-        <form onSubmit={(e) => {
-          submitHandler(e)
-        }}>
-          <h3 className='text-lg font-medium mb-2'>What's your email</h3>
-          <input
-            required
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }}
-            className='bg-[#eeeeee] mb-7 rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base'
-            type="email"
-            placeholder='email@example.com'
+    <div className="flex min-h-screen bg-gradient-to-r from-[#0074E4] to-[#00A676] items-center justify-center px-4">
+      <div className="w-full max-w-5xl bg-white rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2">
+        
+        {/* Left Side - Welcome Section */}
+        <div className="bg-gradient-to-br from-[#D1EEFC] to-[#C3F5E7] text-[#0A2540] flex flex-col items-center justify-center p-10">
+          <img
+            src="/SafeLogo.png"
+            alt="SafeGo Logo"
+            className="w-36 h-36 mr-4 drop-shadow-md"
           />
+          <h2 className="text-3xl font-bold mb-4">Welcome to SafeGo</h2>
+          <p className="text-center text-black/80 max-w-xs">
+            Seamlessly book rides and get to your destination securely and on time. Let's get started!
+          </p>
+        </div>
 
-          <h3 className='text-lg font-medium mb-2'>Enter Password</h3>
+        {/* Right Side - Login Form */}
+        <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Sign in to your account</h3>
 
-          <input
-            className='bg-[#eeeeee] mb-7 rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base'
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value)
-            }}
-            required type="password"
-            placeholder='password'
-          />
+          <form onSubmit={(e) => submitHandler(e)} className="space-y-5">
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">E-mail Address</label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="email@example.com"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#00A676]"
+              />
+            </div>
 
-          <button
-            className='bg-[#111] text-white font-semibold mb-3 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
-          >Login</button>
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Password</label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="password"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#00A676]"
+              />
+            </div>
 
-        </form>
-        <p className='text-center'>New here? <Link to='/signup' className='text-blue-600'>Create new Account</Link></p>
-      </div>
-      <div>
-        <Link
-          to='/captain-login'
-          className='bg-[#10b461] flex items-center justify-center text-white font-semibold mb-5 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
-        >Sign in as Captain</Link>
+            <button
+              type="submit"
+              className="w-full bg-[#0074E4] hover:bg-[#005ec1] text-white py-3 rounded-lg font-semibold transition"
+            >
+              Login
+            </button>
+          </form>
+
+          <p className="mt-4 text-center text-sm text-gray-600">
+            New here?{' '}
+            <Link to="/signup" className="text-[#0074E4] font-medium hover:underline">
+              Create new Account
+            </Link>
+          </p>
+
+          <Link
+            to="/captain-login"
+            className="mt-6 block w-full text-center bg-[#00A676] hover:bg-[#008f5c] text-white py-3 rounded-lg font-semibold transition"
+          >
+            Sign in as Captain
+          </Link>
+        </div>
       </div>
     </div>
   )
